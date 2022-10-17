@@ -4,6 +4,11 @@ interface FormProps {
 	addTodo(title: string): void;
 }
 
+/**
+ * タスク入力フォーム
+ * @param タスク追加メソッド
+ * @returns タスク入力フォームエレメント
+ */
 export default function Form({ addTodo }: FormProps) {
 	const [tmpTitle, setTmpTitle] = useState<string>("");
 

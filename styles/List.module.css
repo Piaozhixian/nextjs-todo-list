@@ -1,0 +1,8 @@
+.title {
+  background-color: antiquewhite;
+  display: flex;
+}
+
+.title>span {
+  width: 25%;
+}

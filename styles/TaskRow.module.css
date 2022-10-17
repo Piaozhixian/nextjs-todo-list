@@ -1,0 +1,9 @@
+.row {
+  display: flex;
+  margin-top: 4px;
+}
+
+.row>span {
+  width: 25%;
+  overflow: hidden;
+}

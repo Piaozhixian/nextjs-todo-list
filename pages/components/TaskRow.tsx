@@ -1,9 +1,9 @@
-import next from "next";
-
 import Todo from "../types/todo";
+import styles from "../../styles/TaskRow.module.css"
 
 interface TaskRowProps {
-    todo: Todo;
+  todo: Todo;
+  setFinish(todo: Todo): void;
 }
 
 /**
@@ -11,12 +11,19 @@ interface TaskRowProps {
  * @param タスク
  * @returns タスク詳細
  */
-export default function TaskRow({ todo }: TaskRowProps) {
-    return (
-        <li className="task-row">
-            <span>{todo.title}</span>
-            <span>{todo.isFinished}</span>
-            <span>{todo.createdAt.toString()}</span>
-        </li>
-    )
+export default function TaskRow({ todo, setFinish }: TaskRowProps) {
+  return (
+    <>
+      <li className={styles.row}>
+        <span>{todo.title}</span>
+        <span>{todo.isFinished ? "完成" : "未完成"}</span>
+        <span>{todo.createdAt.getFullYear()}/{todo.createdAt.getMonth() + 1}/{todo.createdAt.getDate()}</span>
+        <button
+          disabled={todo.isFinished}
+          onClick={(e) => {
+            setFinish(todo);
+          }}>完了</button>
+      </li>
+    </>
+  )
 }
