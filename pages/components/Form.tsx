@@ -1,32 +1,26 @@
-import next from "next";
-
 import { useState } from "react";
-import Task from "../types/task";
 
-export default function Form() {
-	const emptyTask: Task = {
-		title: '',
-		status: 'todo',
-		createdAt: new Date()
-	};
+interface FormProps {
+	addTodo(title: string): void;
+}
 
-	const [tasks, setTasks] = useState<Task[]>([]);
-	const [tmpTask, setTmpTask] = useState<Task>(emptyTask);
+export default function Form({ addTodo }: FormProps) {
+	const [tmpTitle, setTmpTitle] = useState<string>("");
 
-	const addTask = () => {
-		setTasks([...tasks, tmpTask]);
-		setTmpTask(emptyTask);
-	};
 	return (
 		<div className="form">
 			<input
 				type="text"
 				name="todo"
-
-				onChange={e => setTmpTask({ title: e.target.value, status: 'todo', createdAt: new Date() })}
-				value={tmpTask.title}
+				onChange={(e) => {
+					setTmpTitle(e.currentTarget.value)
+				}}
+				value={tmpTitle}
 			/>
-			<button onClick={addTask}>Add</button>
+			<button onClick={(e) => {
+				addTodo(tmpTitle);
+				setTmpTitle('');
+			}}>Add</button>
 		</div>
 	)
 }

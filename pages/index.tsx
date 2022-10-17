@@ -1,29 +1,21 @@
 import type { NextPage } from 'next'
 import { useState } from 'react'
-import Task from './types/task'
 import List from './components/List';
 import Form from './components/Form';
+import Todo from './types/todo';
 
 const Home: NextPage = () => {
-  const emptyTask: Task = {
-    title: '',
-    status: 'todo',
-    createdAt: new Date()
-  };
+  const [todos, setTodos] = useState<Todo[]>([]);
 
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [tmpTask, setTmpTask] = useState<Task>(emptyTask);
-
-  const addTask = () => {
-    setTasks([...tasks, tmpTask]);
-    setTmpTask(emptyTask);
+  const addTodo = (title: string) => {
+    setTodos([...todos, { title: title, isFinished: false, createdAt: new Date() }]);
   };
 
   return (
     <>
       <h1>Todo List</h1>
-      <Form />
-      <List tasks={tasks} />
+      <Form addTodo={addTodo} />
+      <List todos={todos} />
       <style>{`
         h1 {
           text-align: center;

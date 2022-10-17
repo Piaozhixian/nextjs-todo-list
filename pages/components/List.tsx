@@ -1,10 +1,10 @@
 import next from "next";
 
-import Task from "../types/task";
+import Todo from "../types/todo";
 import TaskRow from "./TaskRow";
 
 interface ListProps {
-    tasks: Task[];
+  todos: Todo[];
 }
 
 /**
@@ -12,13 +12,14 @@ interface ListProps {
  * @param タスク配列 
  * @returns タスク一覧リスト
  */
-export default function List({tasks}: ListProps) {
-    const taskRows = tasks.map((task, index) => {
-        return <TaskRow task={task} />
-    })
-    return (
-        <ul>
-            {taskRows}
-        </ul>
-    )
+export default function List({ todos }: ListProps) {
+  const taskRows = todos.map((todo, index) => {
+    return <TaskRow todo={todo} key={index} />
+  })
+
+  return (
+    <ul>
+      {taskRows}
+    </ul>
+  )
 }

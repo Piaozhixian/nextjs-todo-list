@@ -1,9 +1,9 @@
 import next from "next";
 
-import Task from "../types/task";
+import Todo from "../types/todo";
 
 interface TaskRowProps {
-    task: Task;
+    todo: Todo;
 }
 
 /**
@@ -11,12 +11,12 @@ interface TaskRowProps {
  * @param タスク
  * @returns タスク詳細
  */
-export default function TaskRow({task}: TaskRowProps) {
+export default function TaskRow({ todo }: TaskRowProps) {
     return (
         <li className="task-row">
-            <span>{task.title}</span>
-            <span>{task.status}</span>
-            <span>{task.createdAt.toString()}</span>
+            <span>{todo.title}</span>
+            <span>{todo.isFinished}</span>
+            <span>{todo.createdAt.toString()}</span>
         </li>
     )
 }
