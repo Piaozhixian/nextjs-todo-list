@@ -1,6 +1,6 @@
 import Todo from "../types/todo";
 import TaskRow from "./TaskRow";
-import styles from "../../styles/List.module.css"
+import styles from "../styles/List.module.css"
 
 interface ListProps {
   todos: Todo[];

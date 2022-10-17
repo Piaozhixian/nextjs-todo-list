@@ -1,5 +1,5 @@
 import Todo from "../types/todo";
-import styles from "../../styles/TaskRow.module.css"
+import styles from "../styles/TaskRow.module.css"
 
 interface TaskRowProps {
   todo: Todo;

@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import { useState } from 'react'
-import List from './components/List';
-import Form from './components/Form';
-import Todo from './types/todo';
+import List from '../components/List';
+import Form from '../components/Form';
+import Todo from '../types/todo';
 import styles from '../styles/Index.module.css'
 
 const Home: NextPage = () => {
